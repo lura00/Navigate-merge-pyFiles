@@ -3,8 +3,9 @@
 # read number1
 # read number2
 # echo "The sum of your two numbers is: "$(expr $number1 + $number2)""
-
+#!/usr/bin/bash
 while true; do
+    STRING = '.py'
     pushd "$python_dir" > /dev/null
     echo "Here is your working directory: $PWD"
     echo ""
@@ -19,16 +20,14 @@ while true; do
             let count=count+1
         fi
         if file --mime-type "$file" | grep .*.py; then
-            echo "It is python files!"
+            echo "This is python files!"
             echo "Would you like to merge?"
             read choice
-            if choice == "yes"; then
+            if [[ $choice == 'yes' ]]; then
                 touch output.py
-                read merge1
-                read merge2
-                cat $merge1 $merge2 > output.py
+                cat *.py > output.py
             else
-                echo "Loop continue"
+            echo "Continue"
             fi
         fi
     done
